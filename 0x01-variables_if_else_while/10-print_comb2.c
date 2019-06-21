@@ -8,27 +8,31 @@
 int main(void)
 {
 
-  int s;
-  int a;
+int s;
+int a;
 
-  for (s = 48; s <= 57; s++)
-    {
-      for (a = 48; a <= 57; a++)
-	{
-	  putchar(s);
-	  putchar(a);
-	  
-	  if (s != 57 || a != 57)
-	    {
-	    putchar(',');
-	    putchar(' ');
-	    }
+for (s = 48; s <= 57; s++)
+{
 
-	}
+for (a = 48; a <= 57; a++)
+{
 
-    }
+putchar(s);
+putchar(a);
 
-  putchar('\n');
+if (s != 57 || a != 57)
+{
 
-  return (0);
+putchar(',');
+putchar(' ');
+
+}
+
+}
+
+}
+
+putchar('\n');
+
+return (0);
 }
