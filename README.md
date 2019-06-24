@@ -1,1 +1,1 @@
-This directory is for practicing nested loops and functions
+This directory is for practicing C
