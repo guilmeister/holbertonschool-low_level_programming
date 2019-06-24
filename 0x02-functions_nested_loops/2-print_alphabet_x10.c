@@ -1,5 +1,5 @@
 /**
- * print_alphabet_x10 - Prints alphabet a-z x10
+ * print_alphabet_x10 - Prints alphabet from a-z x10
  *
  * Return: Always 0 (Success)
  */
