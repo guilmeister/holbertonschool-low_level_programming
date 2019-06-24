@@ -16,9 +16,9 @@ for (counter = 1; counter <= 10; counter++)
 {
 
 for (x = 97; x <= 122; x++)
-putchar (x);
+_putchar (x);
 
-putchar ('\n');
+_putchar ('\n');
 
 }
 
