@@ -1,0 +1,1 @@
+This directory is for practicing variables, if, else, while loops  
