@@ -1,3 +1,5 @@
+#include "holberton.h"
+
 /**
  * print_alphabet - Prints alphabet a-z
  *
@@ -10,8 +12,8 @@ void print_alphabet(void)
 int x;
 
 for (x = 97; x <= 122; x++)
-putchar (x);
+_putchar (x);
 
-putchar ('\n');
+_putchar ('\n');
 
 }
