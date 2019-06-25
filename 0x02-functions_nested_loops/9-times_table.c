@@ -17,7 +17,9 @@ for (ones = 0; ones <= 9; ones++)
 value = tens * ones;
 if (value / 10 == 0)
 {
+if (ones != 0)
 _putchar(' ');
+
 _putchar(value % 10 + '0');
 }
 else if (value / 10 == 0 && value % 10 != 0)
