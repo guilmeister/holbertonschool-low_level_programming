@@ -3,10 +3,10 @@
 /**
  * add - Adds the numbers
  *
- * a - First number to be added
- * b - Second number to be added
+ * @a: First number to be added
+ * @b: Second number to be added
  *
- * Return: Sum 
+ * Return: Sum
  */
 
 int add(int a, int b)
