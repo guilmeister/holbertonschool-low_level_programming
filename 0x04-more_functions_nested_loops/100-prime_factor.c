@@ -13,7 +13,7 @@ int x;
 
 x = 50829599;
 
-printf("%d", x);
+printf("%d\n", x);
 
 return (0);
 }
