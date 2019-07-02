@@ -20,13 +20,13 @@ s++;
 
 start--;
 
-while (start < s)
+while (start <= s)
 {
-start++;
-s--;
 tmp = *start;
 *start = *s;
 *s = tmp;
+start++;
+s--;
 }
 
 }
