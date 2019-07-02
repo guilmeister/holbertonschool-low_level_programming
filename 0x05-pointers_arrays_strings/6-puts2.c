@@ -1,7 +1,7 @@
 #include "holberton.h"
 
 /**
- * puts2 - prints even
+ * puts2 - prints every other character
  *
  * @str: value from main
  *
