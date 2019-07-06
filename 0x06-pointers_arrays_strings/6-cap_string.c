@@ -10,6 +10,14 @@ char *cap_string(char *a)
 	for (ctr = 0; a[ctr] != '\0'; ctr++)
 	{
 
+		if (ctr == 0)
+		{
+			if (a[ctr] >= 'a' && a[ctr] <= 'z')
+			{
+				a[ctr] = a[ctr] - 32;
+			}
+		}
+
 		if (a[ctr] == ' ' || a[ctr] == '\t' || a[ctr] == '\n' ||
 a[ctr] == ',' || a[ctr] == ';' || a[ctr] == '.' || a[ctr] == '!' ||
 a[ctr] == '?' || a[ctr] == '\"' || a[ctr] == '(' || a[ctr] == ')' ||
