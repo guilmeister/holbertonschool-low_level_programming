@@ -1,3 +1,5 @@
+#include "holberton.h"
+
 /**
  * _strncpy - copies 2 string
  *
@@ -17,11 +19,12 @@ char *_strncpy(char *dest, char *src, int n)
 destcounter++)
 	{
 		dest[destcounter] = src[destcounter];
+	}
 
-		if (destcounter < n)
-			dest[destcounter + 43] = 0;
+	for (; destcounter < n; destcounter++)
+	{
+		dest[destcounter] = 0;
 	}
 
 	return (dest);
-
 }
