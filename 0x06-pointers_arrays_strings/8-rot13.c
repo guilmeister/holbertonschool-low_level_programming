@@ -13,8 +13,8 @@ char *rot13(char *a)
 
 	int outer;
 	int inner;
-	char rotation[53] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
-	char alphabet[53] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	char rotation[55] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+	char alphabet[55] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
 	for (outer = 0; a[outer] != '\0'; outer++)
 	{
@@ -22,7 +22,10 @@ char *rot13(char *a)
 		for (inner = 0; alphabet[inner] != '\0'; inner++)
 		{
 			if (a[outer] == alphabet[inner])
+			{
 				a[outer] = rotation[inner];
+				break;
+			}
 		}
 
 	}
