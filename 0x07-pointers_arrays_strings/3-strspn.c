@@ -9,27 +9,20 @@
 
 unsigned int _strspn(char *s, char *accept)
 {
-	int x = 0;
-	int y = 0;
+
+	int x, y;
 	int counter = 0;
 
-	while (accept[x] != s[y] || accept[x] != '\0')
+	for (x = 0; accept[x] != '\0'; x++)
 	{
-		counter++;
-
-		if (accept[x] == s[y])
 		{
-			return (counter);
+			for (y = 0; (s[y] >= 'a' && s[y] <= 'z') ||
+(s[y] >= 'A' && s[y] <= 'Z'); y++)
+			{
+				if (accept[x] == s[y])
+					counter++;
+			}
 		}
-
-		if (s[y] == '\0')
-		{
-			x++;
-		}
-
-		y++;
-
 	}
-
-	return (0);
+	return (counter);
 }
