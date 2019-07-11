@@ -1,64 +1,54 @@
 /**
- * rev - reverse string
+ * _strlen_recursion - prints length of string recursively
  *
- * @s: value from main
- *
- * Return: counter string
- */
-
-char rev(char *s)
-{
-	if (*s == '\0')
-		return (*s);
-
-	return (rev(s + 1));
-}
-
-/**
- * stringlength - prints length of string recursively
- *
- * @s: value from main
+ * @z: value from main
  *
  * Return: length
  */
 
-
-int stringlength(char *s)
+int _strlen_recursion(char *z)
 {
-	if (*s == '\0')
+	if (*z == '\0')
 		return (0);
 
 	else
-		return (stringlength(s + 1) + 1);
+		return (_strlen_recursion(z + 1) + 1);
 }
 
 /**
- * is_palindrome - checks if string is palindrome
+ * checker - checks for palindrome
+ *
+ * @start: value from main
+ * @end: value from main
+ * @a: value from main
+ *
+ * Return: 1/0 if palindrome or not
+ */
+
+int checker(char *a, int start, int end)
+{
+	if (end == 0 || end == 1)
+		return (1);
+
+	else if (a[start] == a[end])
+		return (checker(a, start + 1, end - 1));
+
+	else
+		return (0);
+}
+
+/**
+ * is_palindrome - returns value from checker function
  *
  * @s: value from main
  *
- * Return: 0 if false or 1 if true
+ * Return: value from checker function
  */
-
 
 int is_palindrome(char *s)
 {
-	char reverse = rev(s);
-	int counter = stringlength(s);
+	int x = _strlen_recursion(s);
+	int y = checker(s, 0, x - 1);
 
-	if (counter == 0 || counter == 1)
-		return (1);
-
-	else
-	{
-		char first = *s;
-		char end = reverse;
-
-		if (first != end)
-			return (0);
-
-		else
-			return (is_palindrome(s));
-	}
-
+	return (y);
 }
