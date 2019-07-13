@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 		if (atoi(argv[i]) > 0)
 			sum = sum + atoi(argv[i]);
 
-		else if (atoi(argv[i]) != 4)
+		else if (sizeof(argv[i]) != 4)
 		{
 			printf("Error\n");
 			return (1);
