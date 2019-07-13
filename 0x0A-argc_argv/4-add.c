@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 /**
  * main - Entry point
@@ -21,7 +22,7 @@ int main(int argc, char *argv[])
 		if (atoi(argv[i]) > 0)
 			sum = sum + atoi(argv[i]);
 
-		else if (sizeof(argv[i]) != 4)
+		else if (isdigit(atoi(argv[i])) != 1)
 		{
 			printf("Error\n");
 			return (1);
