@@ -31,6 +31,9 @@ char *str_concat(char *s1, char *s2)
 
 	buff = (char *) malloc((size + 1) * sizeof(char));
 
+	if (buff == NULL)
+		return (NULL);
+
 	for (x = 0; s1[x] != '\0'; x++)
 		buff[x] = s1[x];
 
