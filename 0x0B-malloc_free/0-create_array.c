@@ -14,7 +14,7 @@
 char *create_array(unsigned int size, char c)
 {
 
-	char *buff = (char *) malloc((size + 1) * sizeof(char));
+	char *buff = (char *) malloc(size * sizeof(char));
 	unsigned int i;
 
 	if (size == 0)
@@ -23,6 +23,8 @@ char *create_array(unsigned int size, char c)
 	for (i = 0; i < size; i++)
 		buff[i] = c;
 
-	return (buff);
+	if (buff == NULL)
+		return (NULL);
 
+	return (buff);
 }
