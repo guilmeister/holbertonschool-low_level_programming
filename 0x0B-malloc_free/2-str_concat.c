@@ -16,12 +16,13 @@ char *str_concat(char *s1, char *s2)
 	char *buff;
 	int size = 0;
 	int x, y, z;
+	char alt1;
 
 	if (s1 == NULL)
-		return (NULL);
+		s1 = "";
 
 	if (s2 == NULL)
-		return (NULL);
+		s2 = "";
 
 	for (z = 0; s1[z] != '\0'; z++)
 		size++;
