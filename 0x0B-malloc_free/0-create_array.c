@@ -20,11 +20,11 @@ char *create_array(unsigned int size, char c)
 	if (size == 0)
 		return (NULL);
 
-	for (i = 0; i < size; i++)
-		buff[i] = c;
-
 	if (buff == NULL)
 		return (NULL);
+
+	for (i = 0; i < size; i++)
+		buff[i] = c;
 
 	return (buff);
 }
