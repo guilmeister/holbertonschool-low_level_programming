@@ -43,7 +43,7 @@ int **alloc_grid(int width, int height)
 
 	for (x = 0; x < width; x++)
 	{
-		for (y = 0; y < width; y++)
+		for (y = 0; y < height; y++)
 		{
 			buff[x][y] = 0;
 		}
