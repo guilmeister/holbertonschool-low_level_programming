@@ -24,6 +24,9 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 
 	buff = malloc(nmemb * size);
 
+	if (buff == NULL)
+		return (NULL);
+
 	_memset(buff, 0, nmemb * size);
 
 	return (buff);
