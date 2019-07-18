@@ -27,6 +27,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 
 	for (x = 0; s1[x] != '\0'; x++)
 		s1count++;
+
 	for (x = 0; s2[x] != '\0'; x++)
 		s2count++;
 
@@ -45,7 +46,8 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 
 	for (x = 0; s1[x] != '\0'; x++)
 		buff[x] = s1[x];
-	for (y = 0; y <= n; y++)
+
+	for (y = 0; y < n; y++)
 	{
 		buff[x] = s2[y];
 		x++;
