@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "holberton.h"
 
 /**
  * _calloc - creates memory allocation for array to 0
@@ -13,8 +14,7 @@
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
 
-	char *buff;
-	unsigned int x;
+	void *buff;
 
 	if (nmemb == 0)
 		return (NULL);
@@ -24,8 +24,30 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 
 	buff = malloc(nmemb * size);
 
-	for (x = 0; x < nmemb; x++)
-		buff[x] = 0;
+	_memset(buff, 0, nmemb * size);
 
 	return (buff);
+}
+
+/**
+ * _memset - fills first n bytes of memory area pointed by constant byte b
+ *
+ * @s: value from main
+ * @b: value from main
+ * @n: value from main
+ *
+ * Return: value of s
+ */
+
+char *_memset(char *s, char b, unsigned int n)
+{
+
+	unsigned int x;
+
+	for (x = 0; x < n; x++)
+	{
+		s[x] = b;
+	}
+
+	return (s);
 }
