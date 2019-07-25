@@ -14,11 +14,22 @@
 int main(int argc, char *argv[])
 {
 
+	int (*x)(int, int);
+
 	if (argc != 4)
 	{
 		printf("Error\n");
 		exit(98);
 	}
+
+	x = (*get_op_func)(argv[2]);
+
+	if (x == NULL)
+	{
+		printf("Error\n");
+		exit(99);
+	}
+
 
 	if (atoi(argv[3]) == 0 && ((argv[2][0] == '/') || (argv[2][0] == '%')))
 	{
