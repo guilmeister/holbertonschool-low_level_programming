@@ -10,21 +10,24 @@
 
 void print_number(int n)
 {
+	unsigned int number2;
 
-if (n == 0)
-_putchar(n);
+	if (n < 0)
+	{
+		_putchar('-');
+		number2 = -n;
+	}
 
-if (n < 0)
-{
+	else if (n == 0)
+	{
+		_putchar('0');
+		return;
+	}
+	else
+		number2 = n;
 
-_putchar('-');
-n = -n;
+	if (number2 / 10 != 0)
+		print_number(number2 / 10);
 
-}
-
-if (n / 10)
-print_number(n / 10);
-
-_putchar (n % 10 + '0');
-
+	_putchar(number2 % 10 + '0');
 }
