@@ -48,16 +48,16 @@ list_t *add_node_end(list_t **head, const char *str)
 	new->str = strdup(str);
 
 	if (new->str == NULL)
+	{
+		free(new);
 		return (NULL);
+	}
 
 	if (*head == NULL)
 	{
 		*head = new;
 		return (new);
 	}
-
-	if (new->str == NULL)
-		return (NULL);
 
 	while (last->next != NULL)
 		last = last->next;
