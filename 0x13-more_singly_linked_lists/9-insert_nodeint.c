@@ -6,6 +6,26 @@
 size_t listint_len(const listint_t *h);
 
 /**
+ * listint_len - print the values inside the list given
+ *
+ * @h: value passed main
+ *
+ * Return: count
+ */
+
+size_t listint_len(const listint_t *h)
+{
+	int count = 0;
+
+	while (h != NULL)
+	{
+		count++;
+		h = h->next;
+	}
+	return (count);
+}
+
+/**
  * insert_nodeint_at_index - add new node at index
  *
  * @head: starting node
@@ -18,8 +38,14 @@ size_t listint_len(const listint_t *h);
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
 	unsigned int x;
+	unsigned int listlength = 0;
 	listint_t *new;
 	listint_t *temporary = *head;
+
+	listlength = listint_len(*head);
+
+	if (idx < 1 || idx > listlength + 1)
+		return (NULL);
 
 	if (head == NULL || (*head) == NULL)
 		return (NULL);
