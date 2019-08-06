@@ -3,6 +3,31 @@
 #include <stdlib.h>
 #include <string.h>
 
+listint_t *add_nodeint(listint_t **head, const int n);
+
+/**
+ * add_nodeint - add new node at beginning
+ *
+ * @head: starting node
+ * @n: value printed
+ *
+ * Return: new
+ */
+
+listint_t *add_nodeint(listint_t **head, const int n)
+{
+	listint_t *new = malloc(sizeof(listint_t));
+
+	if (new == NULL)
+		return (NULL);
+
+	new->n = n;
+	new->next = *head;
+	*head = new;
+
+	return (new);
+}
+
 /**
  * insert_nodeint_at_index - add new node at index
  *
@@ -19,15 +44,20 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	listint_t *new;
 	listint_t *temporary = *head;
 
-	if (head == NULL || (*head) == NULL)
+	if (idx != 0 && (head == NULL || (*head) == NULL))
 		return (NULL);
+
+	if (idx == 0 && (head == NULL || (*head) == NULL))
+	{	new = add_nodeint(head, n);
+		return (new);
+	}
 
 	new = malloc(sizeof(listint_t));
 
 	if (new == NULL)
 		return (NULL);
 
-	if (idx == 0)
+	if (idx == 0 && (head != NULL || (*head) != NULL))
 	{
 		new->next = (*head);
 		(*head) = new;
