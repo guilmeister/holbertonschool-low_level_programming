@@ -12,11 +12,11 @@
 
 int get_bit(unsigned long int n, unsigned int index)
 {
-	int a[20];
+	int a[64];
 	int x;
 	unsigned int y;
 
-	if (index > 64)
+	if (index >= 32)
 		return (-1);
 
 	for (x = 0; n > 0; x++)
