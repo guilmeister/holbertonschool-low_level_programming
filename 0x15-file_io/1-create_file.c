@@ -39,7 +39,6 @@ int create_file(const char *filename, char *text_content)
 	int buffer;
 	int arraysize = 0;
 	ssize_t checker = 0;
-	char *array;
 
 	if (filename == NULL)
 		return (-1);
@@ -50,19 +49,12 @@ int create_file(const char *filename, char *text_content)
 		return (-1);
 
 	arraysize = stringcounter(text_content);
-	array = malloc(sizeof(char) * arraysize);
 
-	if (array == NULL)
-		return (-1);
-
-	checker = write(STDOUT_FILENO, array, arraysize);
+	checker = write(buffer, text_content, arraysize);
 
 	if (checker == -1)
-	{	free(array);
 		return (-1);
-	}
 
 	close(buffer);
-	free(array);
 	return (1);
 }
