@@ -19,7 +19,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	int buffer;
 	ssize_t checker = 0;
 	ssize_t actualsize = 0;
-	char array[1024];
+	char array[2000];
 
 	if (filename == NULL)
 		return (0);
