@@ -19,7 +19,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	int buffer;
 	ssize_t checker = 0;
 	ssize_t actualsize = 0;
-	char array[2000];
+	char *array;
 
 	if (filename == NULL)
 		return (0);
@@ -29,23 +29,25 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (buffer == -1)
 		return (0);
 
-	actualsize = read(buffer, array, letters);
+	array = malloc(sizeof(char) * letters);
 
-	if (actualsize == -1)
-		return (0);
+	actualsize = read(buffer, array, letters);
 
 	close(buffer);
 	buffer = open(filename, O_CREAT | O_WRONLY, 0600);
 
 	if (buffer == -1)
+	{	free(array);
 		return (0);
-
+	}
 	checker = write(2, array, actualsize);
 
 	if (checker == -1 || checker != actualsize)
+	{	free(array);
 		return (0);
+	}
 
 	close(buffer);
-
+	free(array);
 	return (actualsize);
 }
