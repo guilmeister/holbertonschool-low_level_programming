@@ -43,14 +43,17 @@ int create_file(const char *filename, char *text_content)
 	if (filename == NULL)
 		return (-1);
 
-	buffer = open(filename, O_CREAT | O_WRONLY, 0600);
+	if (text_content == NULL)
+		text_content = "";
+
+	buffer = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
 
 	if (buffer == -1)
 		return (-1);
 
 	arraysize = stringcounter(text_content);
 
-	checker = write(STDOUT_FILENO, text_content, arraysize);
+	checker = write(buffer, text_content, arraysize);
 
 	if (checker == -1)
 		return (-1);
