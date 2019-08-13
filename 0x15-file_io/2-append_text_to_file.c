@@ -43,7 +43,7 @@ int append_text_to_file(const char *filename, char *text_content)
 	if (filename == NULL)
 		return (-1);
 
-	buffer = open(filename, O_WRONLY | O_APPEND, 0600);
+	buffer = open(filename, O_RDWR | O_APPEND, 0600);
 
 	if (buffer == -1)
 		return (-1);
