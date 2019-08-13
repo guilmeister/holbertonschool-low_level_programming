@@ -50,7 +50,7 @@ int create_file(const char *filename, char *text_content)
 
 	arraysize = stringcounter(text_content);
 
-	checker = write(buffer, text_content, arraysize);
+	checker = write(STDOUT_FILENO, text_content, arraysize);
 
 	if (checker == -1)
 		return (-1);
