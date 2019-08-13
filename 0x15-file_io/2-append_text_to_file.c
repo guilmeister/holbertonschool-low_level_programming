@@ -47,10 +47,8 @@ int append_text_to_file(const char *filename, char *text_content)
 
 	if (buffer == -1)
 		return (-1);
-	if (buffer == 1 && text_content == NULL)
+	if (buffer && text_content == NULL)
 		return (1);
-	if (buffer == -1 && text_content == NULL)
-		return (-1);
 
 	arraysize = stringcounter(text_content);
 
