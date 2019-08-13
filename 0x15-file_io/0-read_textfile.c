@@ -40,7 +40,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	{	free(array);
 		return (0);
 	}
-	checker = write(2, array, actualsize);
+	checker = write(STDOUT_FILENO, array, actualsize);
 
 	if (checker == -1 || checker != actualsize)
 	{	free(array);
