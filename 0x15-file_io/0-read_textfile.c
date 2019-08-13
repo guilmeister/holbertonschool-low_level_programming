@@ -17,7 +17,8 @@
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int buffer;
-	int actualsize = 0;
+	ssize_t checker = 0;
+	ssize_t actualsize = 0;
 	char array[1024];
 
 	if (filename == NULL)
@@ -35,7 +36,11 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (buffer == -1)
 		return (0);
 
-	write(2, array, actualsize);
+	checker = write(2, array, actualsize);
+
+	if (checker == -1 || checker != actualsize)
+		return (0);
+
 	close(buffer);
 
 	return (actualsize);
