@@ -36,12 +36,13 @@ int main(int ac, char **av)
 	{	dprintf(2, "Error: Can't write to %s\n", av[2]);
 		exit(99);	}
 	while ((actualsize = read(filedesc1, array, 1024)))
-	{	wchecker = write(filedesc2, array, actualsize);
+	{
 		if (actualsize == -1)
 		{	dprintf(2, "Error: Can't read from file %s\n", av[1]);
 			closerfunction(filedesc1);
 			closerfunction(filedesc2);
 			exit(98);		}
+		wchecker = write(filedesc2, array, actualsize);
 		if (wchecker == -1)
 		{	dprintf(2, "Error: Can't write to %s\n", av[2]);
 			closerfunction(filedesc1);
