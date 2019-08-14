@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include "holberton.h"
 
+void closerfunction(int filename);
+
 /**
  * main - program copy contents of file to another file
  *
@@ -24,36 +26,50 @@ int main(int ac, char **av)
 
 	if (ac != 3)
 	{	write(STDERR_FILENO, err97, 29);
-		exit(97);
-	}
+		exit(97);	}
 	filedesc1 = open(av[1], O_RDONLY);
 	if (filedesc1 == -1)
 	{	dprintf(2, "Error: Can't read from file %s\n", av[1]);
-		exit(98);
-	}
+		exit(98);	}
 	filedesc2 = open(av[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (filedesc2 == -1)
 	{	dprintf(2, "Error: Can't write to %s\n", av[2]);
-		exit(99);
-	}
+		exit(99);	}
 	while ((actualsize = read(filedesc1, array, 1024)))
 	{	wchecker = write(filedesc2, array, actualsize);
 		if (actualsize == -1)
 		{	dprintf(2, "Error: Can't read from file %s\n", av[1]);
+			closerfunction(filedesc1);
+			closerfunction(filedesc2);
 			exit(98);		}
 		if (wchecker == -1)
 		{	dprintf(2, "Error: Can't write to %s\n", av[2]);
+			closerfunction(filedesc1);
+			closerfunction(filedesc2);
 			exit(99);		}
 	}
 	cchecker = close(filedesc1);
 	if (cchecker == -1)
 	{	dprintf(2, "Error: Can't close fd %d\n", cchecker);
-		exit(100);
-	}
+		exit(100);	}
 	cchecker = close(filedesc2);
 	if (cchecker == -1)
 	{	dprintf(2, "Error: Can't close fd %d\n", cchecker);
-		exit(100);
-	}
+		exit(100);	}
 	return (0);
+}
+
+/**
+ * closerfunction - close error
+ *
+ * @filename: filename to be read and write
+ *
+ */
+
+void closerfunction(int filename)
+{
+	int cchecker = close(filename);
+
+	if (cchecker == -1)
+		dprintf(2, "Error: Can't close fd %d\n", filename);
 }
