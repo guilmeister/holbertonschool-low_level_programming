@@ -35,7 +35,7 @@ int main(int ac, char **av)
 	if (filedesc2 == -1)
 	{	dprintf(2, "Error: Can't write to %s\n", av[2]);
 		exit(99);	}
-	while ((actualsize = read(filedesc1, array, 1024)))
+	while ((actualsize = read(filedesc1, array, 1024)) > 0)
 	{
 		if (actualsize == -1)
 		{	dprintf(2, "Error: Can't read from file %s\n", av[1]);
