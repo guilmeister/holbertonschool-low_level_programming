@@ -22,10 +22,10 @@ int main(int ac, char **av)
 	int filedesc1, filedesc2, wchecker, cchecker;
 	int actualsize = 0;
 	char array[1024];
-	char *err97 = "Usage: cp file_from file_to\n";
+	char *err97 = "Usage: cp file_from file_to";
 
 	if (ac != 3)
-	{	write(STDERR_FILENO, err97, 29);
+	{	write(STDERR_FILENO, err97, 28);
 		exit(97);	}
 	filedesc1 = open(av[1], O_RDONLY);
 	if (filedesc1 == -1)
