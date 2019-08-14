@@ -17,7 +17,7 @@
 
 int main(int ac, char **av)
 {
-	int filedesc, wchecker, cchecker;
+	int filedesc1, filedesc2, wchecker, cchecker;
 	int actualsize = 0;
 	char array[1024];
 	char *err97 = "Usage: cp file_from file_to\n";
@@ -26,28 +26,31 @@ int main(int ac, char **av)
 	{	write(STDERR_FILENO, err97, 29);
 		exit(97);
 	}
-	filedesc = open(av[1], O_RDONLY);
-	if (filedesc == -1)
+	filedesc1 = open(av[1], O_RDONLY);
+	if (filedesc1 == -1)
 	{	dprintf(2, "Error: Can't read from file %s\n", av[1]);
 		exit(98);
 	}
-	actualsize = read(filedesc, array, 1024);
-	cchecker = close(filedesc);
+	filedesc2 = open(av[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	if (filedesc2 == -1)
+	{	dprintf(2, "Error: Can't write to %s\n", av[2]);
+		exit(99);
+	}
+	while ((actualsize = read(filedesc1, array, 1024)))
+	{	wchecker = write(filedesc2, array, actualsize);
+		if (actualsize == -1)
+		{	dprintf(2, "Error: Can't read from file %s\n", av[1]);
+			exit(98);		}
+		if (wchecker == -1)
+		{	dprintf(2, "Error: Can't write to %s\n", av[2]);
+			exit(99);		}
+	}
+	cchecker = close(filedesc1);
 	if (cchecker == -1)
-	{	dprintf(2, "Error: Can't close fd %d", cchecker);
+	{	dprintf(2, "Error: Can't close fd %d\n", cchecker);
 		exit(100);
 	}
-	filedesc = open(av[2], O_CREAT | O_WRONLY | O_APPEND | O_TRUNC, 0664);
-	if (filedesc == -1)
-	{	dprintf(2, "Error: Can't write to %s\n", av[2]);
-		exit(99);
-	}
-	wchecker = write(filedesc, array, actualsize);
-	if (wchecker == -1)
-	{	dprintf(2, "Error: Can't write to %s\n", av[2]);
-		exit(99);
-	}
-	cchecker = close(filedesc);
+	cchecker = close(filedesc2);
 	if (cchecker == -1)
 	{	dprintf(2, "Error: Can't close fd %d\n", cchecker);
 		exit(100);
