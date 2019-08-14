@@ -39,8 +39,8 @@ int main(int ac, char **av)
 	}
 	filedesc = open(av[2], O_CREAT | O_WRONLY | O_APPEND | O_TRUNC, 0664);
 	if (filedesc == -1)
-	{	dprintf(2, "Error: Can't read from file %s\n", av[1]);
-		exit(98);
+	{	dprintf(2, "Error: Can't write to %s\n", av[2]);
+		exit(99);
 	}
 	wchecker = write(filedesc, array, actualsize);
 	if (wchecker == -1)
