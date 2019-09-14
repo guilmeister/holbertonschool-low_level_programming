@@ -1,1 +1,1 @@
-This directory is for practicing C
+# holbertonschool-higher_level_programming
