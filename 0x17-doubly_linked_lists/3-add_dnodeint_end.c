@@ -1,5 +1,14 @@
 #include "lists.h"
 
+/**
+ * add_dnodeint_end - add new node at end
+ *
+ * @head: starting node
+ * @n: value printed
+ *
+ * Return: new
+ */
+
 dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 {
 	dlistint_t *last = *head;
@@ -21,7 +30,7 @@ dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 		last = last->next;
 
 	last->next = new;
-	new->prev = new;
+	new->prev = last;
 	new->next = NULL;
 
 	return (new);
