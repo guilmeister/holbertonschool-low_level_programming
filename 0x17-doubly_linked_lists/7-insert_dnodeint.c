@@ -13,41 +13,42 @@
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
 	dlistint_t *new;
-	dlistint_t *insert = *h;
+	dlistint_t *temp = *h;
 	dlistint_t *last = *h;
 	unsigned int i;
 
-	if (idx != 0 && (h == NULL || (*h) == NULL))
-		return (NULL);
 	while (last->next != NULL)
 		last = last->next;
 	for (i = 0; i <= idx - 1; i++)
 	{
-		if (insert == NULL)
+		if (temp == NULL)
 			break;
-		insert = insert->next;
+		temp = temp->next;
 	}
-	if (idx == 0)
-	{
-		new = add_dnodeint(h, n);
+	if (idx == 0 && (h == NULL || (*h) == NULL))
+	{       new = add_dnodeint(h, n);
 		return (new);
 	}
-	else if (insert == last)
-	{
-		new = add_dnodeint_end(h, n);
+	if (idx == 0 && (h != NULL || (*h) != NULL))
+	{       new = malloc(sizeof(dlistint_t));
+		new->next = (*h);
+		(*h) = new;
+		(*h)->prev = NULL;
+		(*h)->n = n;
+		return (*h);
+	}
+	else if (temp == last)
+	{       new = add_dnodeint_end(h, n);
 		return (new);
 	}
-	else if (insert != NULL)
-	{
-		new = malloc(sizeof(dlistint_t));
-		if (new == NULL)
-			return (NULL);
+	else if (temp != NULL)
+	{       new = malloc(sizeof(dlistint_t));
 		new->n = n;
-		new->next = insert->next;
-		new->prev = insert;
-		if (insert->next != NULL)
-			insert->next->prev = new;
-		insert->next = new;
+		new->next = temp->next;
+		new->prev = temp;
+		if (temp->next != NULL)
+			temp->next->prev = new;
+		temp->next = new;
 	}
 	return (new);
 }
