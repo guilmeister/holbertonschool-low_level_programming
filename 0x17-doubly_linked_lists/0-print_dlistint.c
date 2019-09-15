@@ -1,7 +1,7 @@
 #include "lists.h"
 
 /**
- * print_list - print the values inside the list given
+ * print_dlistint - print the values inside the list given
  *
  * @h: value passed main
  *
