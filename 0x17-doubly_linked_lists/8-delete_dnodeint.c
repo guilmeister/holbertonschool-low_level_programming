@@ -31,15 +31,10 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 		temporary = temporary->next;
 	if (temporary == NULL || temporary->next == NULL)
 		return (-1);
-	if (temporary == last)
-	{	*head = temporary->prev;
-		if ((*head) != NULL)
-			(*head)->next = NULL;
-		free(temporary);
-		return (1);
-	}
 	next = temporary->next->next;
 	free(temporary->next);
 	temporary->next = next;
+	if (next != NULL)
+		next->prev = temporary;
 	return (1);
 }
