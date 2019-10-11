@@ -7,17 +7,26 @@
 
 void hash_table_print(const hash_table_t *ht)
 {
-	unsigned long int x = 0;
+	unsigned long int x = 0, y = 0;
+	int counter = 0;
 
-	printf("{");
 	while (x <= ht->size)
 	{
 		if (ht->array[x] != 0)
-		{
-			printf("'%s': '%s'", ht->array[x]->key, ht->array[x]->value);
-			printf(", ");
-		}
+			counter++;
 		x++;
+	}
+	printf("{");
+	while (y <= ht->size)
+	{
+		if (ht->array[y] != 0)
+		{
+			printf("'%s': '%s'", ht->array[y]->key, ht->array[y]->value);
+			if (counter != 1)
+				printf(", ");
+			counter--;
+		}
+		y++;
 	}
 	printf("}");
 	printf("\n");
