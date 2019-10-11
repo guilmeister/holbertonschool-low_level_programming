@@ -15,12 +15,29 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	char *dup_key, *dup_value;
 
 	idx = key_index((const unsigned char *) key, ht->size);
-	head = malloc(sizeof(ht->array[idx]));
-	head->next = ht->array[idx];
-	ht->array[idx] = head;
-	dup_key = strdup(key);
-	dup_value = strdup(value);
-	head->key = dup_key;
-	head->value = dup_value;
-	return (1);
+	if (ht->array[idx] == NULL)
+	{
+		head = malloc(sizeof(ht->array[idx]));
+		if (head == NULL)
+			return (0);
+		head->next = ht->array[idx];
+		ht->array[idx] = head;
+		dup_key = strdup(key);
+		dup_value = strdup(value);
+		head->key = dup_key;
+		head->value = dup_value;
+		return (1);
+	}
+	else
+	{
+		head = malloc(sizeof(ht->array[idx]));
+		if (head == NULL)
+			return (0);
+		ht->array[idx] = head;
+		dup_key = strdup(key);
+		dup_value = strdup(value);
+		head->key = dup_key;
+		head->value = dup_value;
+		return (1);
+	}
 }
