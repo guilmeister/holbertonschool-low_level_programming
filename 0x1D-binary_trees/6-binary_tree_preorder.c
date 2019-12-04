@@ -5,7 +5,6 @@
  * using pre-order traversal
  * @tree: pointer to parent node
  * @func: function given from main
- * Return: New node created
  */
 
 void binary_tree_preorder(const binary_tree_t *tree, void (*func)(int))
