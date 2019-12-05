@@ -17,7 +17,7 @@ int binary_tree_balance(const binary_tree_t *tree)
 		left_side++;
 	if (tree->right != NULL)
 		right_side++;
-	return (left_side - right_side);
+	return (DIFF(left_side, right_side));
 }
 
 /**
