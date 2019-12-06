@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stddef.h>
+#include <limits.h>
 
 /**
  * struct binary_tree_s - Binary tree node
@@ -29,6 +30,7 @@ typedef struct binary_tree_s bst_t;
 typedef struct binary_tree_s avl_t;
 typedef struct binary_tree_s heap_t;
 
+/*For Mandatory Tasks #0-18*/
 void binary_tree_print(const binary_tree_t *);
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value);
@@ -50,7 +52,12 @@ int binary_tree_is_perfect(const binary_tree_t *tree);
 binary_tree_t *binary_tree_sibling(binary_tree_t *node);
 binary_tree_t *binary_tree_uncle(binary_tree_t *node);
 
+/*For Advanced task: #20*/
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));
 int print_level(const binary_tree_t *tree, int level, void (*func)(int));
+
+/*For Advanced task: #24*/
+int binary_tree_is_bst(const binary_tree_t *tree);
+int bst_checker(const binary_tree_t *tree, int minimum, int maximum);
 
 #endif
